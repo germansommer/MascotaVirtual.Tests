@@ -12,6 +12,7 @@ namespace MascotaVirtual.Tests
             //Arrange
             Mascota mascota = new Mascota();
             mascota.EstaLleno = true;
+            mascota.EstaDespierto = true;
 
             //Act
             var resultado = mascota.PuedeComer();
@@ -21,6 +22,49 @@ namespace MascotaVirtual.Tests
 
         }
 
+        [Fact]
+        public void PuedeComer_NoEstaLLeno_DevuelveVerdadero()
+        {
+            //Arrange
+            Mascota mascota = new Mascota();
+            mascota.EstaLleno = false;
+            mascota.EstaDespierto = true;
+
+            //Act
+            var resultado = mascota.PuedeComer();
+
+            //Assert
+            Assert.True(resultado);
+
+        }
+
+        [Fact]
+        public void PuedeComer_EstaDormido_DevuelveFalso()
+        {
+            //Arrange
+            Mascota mascota = new Mascota();
+            mascota.EstaDespierto = false;
+
+            //Act
+            var resultado = mascota.PuedeComer();
+
+            //Assert
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public void PuedeComer_EstaDespierto_DevuelveVerdadero()
+        {
+            //Arrange
+            Mascota mascota = new Mascota();
+            mascota.EstaDespierto = true;
+
+            //Act
+            var resultado = mascota.PuedeComer();
+
+            //Assert
+            Assert.True(resultado);
+        }
 
     }
 }
