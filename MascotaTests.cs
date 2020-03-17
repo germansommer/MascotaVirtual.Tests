@@ -137,5 +137,20 @@ namespace MascotaVirtual.Tests
             //Assert
             Assert.True(resultado);
         }
+
+        [Fact]
+        public void PuedeJugar_EstaDespierto_DevuelveVerdadero()
+        {
+            //Arrange
+            Mascota mascota = new Mascota();
+            mascota.EstaDespierto = true;
+            mascota.EstaLleno = true;
+
+            //Act
+            var resultado = mascota.PuedeJugar();
+
+            //Assert
+            Assert.True(resultado);
+        }
     }
 }
