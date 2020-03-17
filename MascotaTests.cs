@@ -94,5 +94,48 @@ namespace MascotaVirtual.Tests
             Assert.True(resultado);
         }
 
+        [Fact]
+        public void PuedeJugar_EstaDormido_DevuelveFalso()
+        {
+            //Arrange
+            Mascota mascota = new Mascota();
+            mascota.EstaDespierto = false;
+
+            //Act
+            var resultado = mascota.PuedeJugar();
+
+            //Assert
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public void PuedeJugar_NoEstaLLeno_DevuelveFalso()
+        {
+            //Arrange
+            Mascota mascota = new Mascota();
+            mascota.EstaDespierto = true;
+            mascota.EstaLleno = false;
+
+            //Act
+            var resultado = mascota.PuedeJugar();
+
+            //Assert
+            Assert.False(resultado);
+        }
+
+        [Fact]
+        public void PuedeJugar_EstaLLeno_DevuelveVerdadero()
+        {
+            //Arrange
+            Mascota mascota = new Mascota();
+            mascota.EstaDespierto = true;
+            mascota.EstaLleno = true;
+
+            //Act
+            var resultado = mascota.PuedeJugar();
+
+            //Assert
+            Assert.True(resultado);
+        }
     }
 }
